@@ -1,5 +1,5 @@
 #  
-#  Aim of following code is to optimize paramters of recent change of selective constraints in a population for a given site frequency spectum
+#  Aim of following code is to optimize paramters of recent change of selective constraints in a population for a given site frequency spectum,RN/RS, and theta
 #  Citation :
 #  
 # Implementation of Poisson Random Field is based on following references:
@@ -33,9 +33,9 @@ import pandas as pd
 
 # on gen-comp1
 if 1 :
-    path2dat = "/Genomics/grid/users/sunjinm/3.relax/prf/"
-    path2out = "/scratch/tmp/sunjin/prf/out/"
-    sys.path.append('/Genomics/grid/users/sunjinm/3.relax/prf/')
+    path2dat = "."
+    path2out = "."
+    sys.path.append('.')
 
 import pyximport; pyximport.install()
 import cython
@@ -49,38 +49,26 @@ if 1:
     #argvs = sys.argv
     #tt = int( argvs[ 1 ] )
 
-# sim. rnrs array
-#f = open( path2dat + "sim_1g.pkl" )
-f = open( path2dat + "sim_720m_n1.pkl" )
-obsfnfs = pickle.load( f )
+# load SFS array
+# f = open( path2dat + "sim_720m_n1.pkl" )
+# obsfnfs = pickle.load( f )
 
 
 
 print inx
 #inx = 2000
-#fnfs_sim_const = list( fnfscontemp[ inx: inx+12]  )
-fnfs_sim_const = obsfnfs[ inx  :inx + 2  ]
 
-print fnfs_sim_const
-
-best_setup = { 'grate':720.3174534562426, 'gridsize': 18812.2, 'gshape': 8.60719921306176}
-
-best_grate =  720.3174534562426
-
-best_setup = {'grate': 616.5309155607459,
- 'gridsize': 17817.682945307493,
- 'gshape': 14.15749222440084}
 
 best_setup = {'grate': 615.2792203108594,
  'gridsize': 36605.49334857545,
  'gshape': 23.311326464854073}
 
 
-
-
 #xx = sfs_grid( best_setup[ "gridsize"], 0, best_setup["gshape"] )
 #xx = sfs_grid( best_setup[ "gridsize"], 0, best_setup["gshape"] )
 
+
+# sample size
 nsize = 56885*2
 best_setup = {'grate': 578.0 , 'gridsize':  3129.0, 'gshape': 10.0}
 best_grate = 578.0
